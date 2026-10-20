@@ -1,0 +1,52 @@
+import { PressAsset } from "@/types";
+
+export const PRESS_ASSETS: PressAsset[] = [
+  {
+    id: "logo-main",
+    title: "Logo Oficial El Panda DJ (Isotipo / Badge)",
+    description: "PNG en alta resolución con fondo transparente para flyers, cartelería y visuales de pantalla.",
+    format: "PNG",
+    resolution: "3000 x 3000 px",
+    fileSize: "1.2 MB",
+    downloadUrl: "/assets/logos/panda-logo-hq.png",
+    previewUrl: "/panda-logo.png",
+  },
+  {
+    id: "logo-wide",
+    title: "Logo Oficial El Panda DJ (Horizontal / Wide)",
+    description: "Versión apaisada ideal para banners de escenario, cabeceras web y marquesinas de boliches.",
+    format: "PNG",
+    resolution: "4000 x 1500 px",
+    fileSize: "1.8 MB",
+    downloadUrl: "/assets/logos/panda-logo-wide.png",
+    previewUrl: "/logo-wide.png",
+  },
+  {
+    id: "press-photos",
+    title: "Pack de Fotos de Prensa HD (Gira & Escenarios)",
+    description: "Fotografías oficiales en alta resolución (Estadio Vélez, boliches y sesiones de estudio) para diseño de flyers.",
+    format: "ZIP",
+    resolution: "Alta Definición (300 DPI)",
+    fileSize: "48 MB",
+    downloadUrl: "#descargar-fotos",
+    previewUrl: "/assets/logos/panda-logo-hq.png",
+  },
+  {
+    id: "rider-pdf",
+    title: "Rider Técnico & Requerimientos de Cabina (PDF)",
+    description: "Ficha técnica oficial descargable con diagramación de cabina, microfonía y conectividad para el sonidista.",
+    format: "PDF",
+    fileSize: "650 KB",
+    downloadUrl: "#descargar-rider",
+    previewUrl: "/assets/logos/panda-logo-hq.png",
+  },
+  {
+    id: "gacetilla-prensa",
+    title: "Gacetilla de Prensa & Biografía Oficial",
+    description: "Reseña histórica, datos de giras, colaboraciones y menciones para medios de comunicación y notas de prensa.",
+    format: "PDF",
+    fileSize: "850 KB",
+    downloadUrl: "#descargar-bio",
+    previewUrl: "/assets/logos/panda-logo-hq.png",
+  },
+];

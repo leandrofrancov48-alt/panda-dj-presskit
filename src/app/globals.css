@@ -1,0 +1,405 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: 'Yellow Balloon';
+  src: url('/fonts/YellowBalloon.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@theme {
+  --font-sans: var(--font-yellow-balloon), "Yellow Balloon", sans-serif;
+  --font-display: var(--font-yellow-balloon), "Yellow Balloon", sans-serif;
+}
+
+:root {
+  /* EXACT TICKETS COLOR PALETTE (cumbia-tickets / pandaccess.com.ar) */
+  --bg-main: #0C0B09;            /* Deep dark espresso pitch */
+  --bg-card: #15130F;            /* Warm charcoal card surface */
+  --bg-elevated: #201C16;        /* Elevated container surface */
+  --bg-input: #12100D;
+  --border-subtle: #2C261E;
+  --border-strong: #453B2F;
+  --border-focus: #E8D43F;
+
+  --text-primary: #FAF6EE;       /* Warm cream */
+  --text-secondary: #CEC1AD;     /* Sand secondary text */
+  --text-muted: #8F8270;
+
+  --brand-accent: #E8D43F;       /* Electric neon amber/gold */
+  --brand-accent-text: #000000;
+  --brand-accent-hover: #F2E263;
+
+  --brand-sand: #CEC1AD;
+  --brand-cream: #F4F0EA;
+  --brand-gold: #E8D43F;
+  --brand-neon: #F2E263;
+  --brand-cyan: #202C69;
+  --brand-pink: #F46753;
+
+  --header-bg: rgba(12, 11, 9, 0.88);
+  --header-border: rgba(232, 212, 63, 0.25);
+
+  /* Easing curves from Fer Palacio */
+  --ease-tela: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-bombo: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+  color-scheme: dark;
+}
+
+body {
+  background-color: var(--bg-main);
+  color: var(--text-primary);
+  font-family: var(--font-yellow-balloon), 'Yellow Balloon', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* =========================================================
+   SCROLL ANIMATIONS (Fer Palacio Engine)
+   ========================================================= */
+
+/* 1. Brush stroke clip wipe (pincelada) */
+.pincelada {
+  display: block;
+  clip-path: polygon(-4% -40%, -4% -40%, -4% 140%, -4% 140%);
+  transition: clip-path 0.92s var(--ease-tela);
+  transition-delay: calc(var(--i, 0) * 80ms);
+  will-change: clip-path;
+}
+
+.revelar.abierta > .pincelada,
+.revelar.abierta.pincelada,
+.pincelada.abierta {
+  clip-path: polygon(-4% -40%, 114% -40%, 114% 140%, -4% 140%) !important;
+}
+
+/* 2. Slide & Fade up (iza) */
+.iza {
+  opacity: 0;
+  transform: translate3d(0, 36px, 0);
+  transition: transform 0.85s var(--ease-tela), opacity 0.55s ease-out;
+  transition-delay: calc(var(--i, 0) * 80ms);
+  will-change: transform, opacity;
+}
+
+.revelar.abierta > .iza,
+.revelar.abierta.iza,
+.iza.abierta {
+  opacity: 1 !important;
+  transform: translate3d(0, 0, 0) !important;
+}
+
+/* 3. Cinematic Drifting background (deriva) */
+@keyframes deriva {
+  0% {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: scale(1.11) translate3d(-1.5%, -1.2%, 0);
+  }
+  100% {
+    transform: scale(1.04) translate3d(0, 0, 0);
+  }
+}
+
+.animate-deriva {
+  animation: deriva 26s ease-in-out infinite alternate;
+  will-change: transform;
+}
+
+/* 4. Seamless Marquee Ticker */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: marquee 28s linear infinite;
+}
+
+.animate-marquee-fast {
+  display: flex;
+  width: max-content;
+  animation: marquee 16s linear infinite;
+}
+
+.animate-marquee:hover,
+.animate-marquee-fast:hover {
+  animation-play-state: paused;
+}
+
+/* Subtle mascot float */
+@keyframes float-subtle {
+  0%, 100% {
+    transform: translateY(0px) rotate(-6deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(-4deg);
+  }
+}
+
+.animate-float-subtle {
+  animation: float-subtle 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* 5. Letra Bandera Typography with 3D Offset Register (Fer Palacio Style) */
+.letra-bandera {
+  font-family: var(--font-yellow-balloon), 'Yellow Balloon', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.035em;
+  line-height: 0.84;
+  color: var(--text-primary);
+  paint-order: stroke fill;
+  -webkit-text-stroke: 0.076em #000;
+  text-wrap: balance;
+  isolation: isolate;
+  font-weight: 900;
+  display: inline-block;
+  position: relative;
+}
+
+.letra-bandera[data-registro]:before {
+  content: attr(data-registro);
+  color: var(--registro, #E8D43F);
+  paint-order: stroke fill;
+  -webkit-text-stroke: 0.076em var(--registro, #E8D43F);
+  z-index: -1;
+  pointer-events: none;
+  position: absolute;
+  inset: 0;
+  translate: 0.072em 0.058em;
+}
+
+.letra-bandera-gold {
+  font-family: var(--font-yellow-balloon), 'Yellow Balloon', sans-serif;
+  text-transform: uppercase;
+  letter-spacing: -0.035em;
+  line-height: 0.84;
+  color: var(--brand-accent);
+  paint-order: stroke fill;
+  -webkit-text-stroke: 0.076em #000;
+  text-shadow: 5px 5px 0px rgba(0, 0, 0, 0.9);
+  display: inline-block;
+}
+
+/* Stitched Patch (Costura) for Hero Action Buttons */
+.costura {
+  --hilo: rgba(0, 0, 0, 0.45);
+  position: relative;
+  isolation: isolate;
+}
+
+.costura:before {
+  content: "";
+  border: 1.5px dashed var(--hilo);
+  pointer-events: none;
+  z-index: 3;
+  position: absolute;
+  inset: 5px;
+}
+
+/* Glass Header */
+.glass-header {
+  background: var(--header-bg);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid var(--header-border);
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 9px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-main);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--brand-accent);
+}
+
+/* =========================================================
+   SPLASH INTRO ANIMATIONS (Fer Palacio "Recibimiento" Style)
+   ========================================================= */
+.telon-mitad {
+  transition: transform 0.68s cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: transform;
+}
+
+.telon-abrir-arriba {
+  transform: translate3d(0, -101%, 0) !important;
+  transition-delay: 0.15s !important;
+}
+
+.telon-abrir-abajo {
+  transform: translate3d(0, 101%, 0) !important;
+  transition-delay: 0.15s !important;
+}
+
+.splash-pincelada {
+  clip-path: polygon(-4% -40%, -4% -40%, -4% 140%, -4% 140%);
+  transition: clip-path 0.7s var(--ease-tela);
+  will-change: clip-path;
+}
+
+.splash-pincelada.visible {
+  clip-path: polygon(-4% -40%, 114% -40%, 114% 140%, -4% 140%) !important;
+}
+
+@keyframes flash-raja {
+  0% {
+    transform: translate3d(0, -50%, 0) scaleX(0.04);
+    opacity: 0;
+  }
+  30% {
+    transform: translate3d(0, -50%, 0) scaleX(1);
+    opacity: 1;
+  }
+  65% {
+    transform: translate3d(0, -50%, 0) scaleX(1);
+    opacity: 0.5;
+  }
+  100% {
+    transform: translate3d(0, -50%, 0) scaleX(1);
+    opacity: 0;
+  }
+}
+
+.splash-raja {
+  transform: translate3d(0, -50%, 0) scaleX(0);
+  opacity: 0;
+  will-change: transform, opacity;
+  animation: flash-raja 0.16s cubic-bezier(0.2, 0.8, 0.2, 1) forwards !important;
+}
+
+.splash-ribbon {
+  transform: scaleX(0);
+  transition: transform 0.55s var(--ease-tela);
+  will-change: transform;
+}
+
+.splash-ribbon.visible {
+  transform: scaleX(1);
+}
+
+
+/* =========================================================
+   MARKER HIGHLIGHTER ANIMATIONS (Amarillo, Azul, Naranja)
+   ========================================================= */
+.resaltador {
+  position: relative;
+  display: inline-block;
+  padding: 0.08em 0.4em;
+  margin: 0 0.12em;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -0.01em;
+  vertical-align: baseline;
+  border-radius: 2px;
+  color: #FAF6EE;
+  z-index: 1;
+  transition: color 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: calc(var(--delay, 1500ms) + 120ms);
+}
+
+.resaltador::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--delay, 1500ms);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.9);
+  border-radius: 2px;
+  will-change: transform;
+}
+
+/* Trigger highlight wipe when parent or element has .abierta */
+.revelar.abierta .resaltador::before,
+.resaltador.abierta::before {
+  transform: scaleX(1);
+}
+
+/* 1. Amarillo Oficial (#E8D43F) */
+.resaltador-amarillo::before {
+  background-color: #E8D43F;
+}
+.revelar.abierta .resaltador-amarillo,
+.resaltador-amarillo.abierta {
+  color: #000000 !important;
+}
+
+/* 2. Naranja Oficial (#F46753) */
+.resaltador-naranja::before {
+  background-color: #F46753;
+}
+.revelar.abierta .resaltador-naranja,
+.resaltador-naranja.abierta {
+  color: #000000 !important;
+}
+
+/* 3. Azul Oficial (#202C69) */
+.resaltador-azul::before {
+  background-color: #202C69;
+  border: 1.5px solid rgba(232, 212, 63, 0.65);
+}
+.revelar.abierta .resaltador-azul,
+.resaltador-azul.abierta {
+  color: #FAF6EE !important;
+}
+
+/* =========================================================
+   TENDEDERO DE FOTOS (Fer Palacio Clothesline Carousel)
+   ========================================================= */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@keyframes foto-vaiven {
+  0%, 100% {
+    transform: rotate(var(--rot, 0deg));
+  }
+  50% {
+    transform: rotate(calc(var(--rot, 0deg) + var(--sway, 0.9deg)));
+  }
+}
+
+.tendedero-foto {
+  transform-origin: top center;
+  animation: foto-vaiven var(--dur, 5s) ease-in-out infinite;
+  animation-delay: var(--del, 0s);
+  will-change: transform;
+}
+
+.tendedero-foto:hover {
+  animation-play-state: paused;
+  transform: rotate(0deg) translateY(-8px) scale(1.025) !important;
+}
+
+
