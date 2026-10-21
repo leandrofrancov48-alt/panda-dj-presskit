@@ -2,7 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from "react";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, X, ZoomIn, Camera, Sparkles } from "lucide-react";
+import { ChevronLeft, ChevronRight, X, ZoomIn } from "lucide-react";
 
 export interface GalleryItem {
   id: string;
@@ -392,13 +392,6 @@ export default function PhotoTendedero() {
   }, []);
 
 
-  // Manual arrow navigation
-  const handleScroll = (direction: "left" | "right") => {
-    if (!scrollRef.current) return;
-    const distance = direction === "left" ? -460 : 460;
-    scrollRef.current.scrollBy({ left: distance, behavior: "smooth" });
-  };
-
   // Mouse Drag to Scroll handlers
   const handleMouseDown = (e: React.MouseEvent) => {
     if (!scrollRef.current) return;
@@ -462,51 +455,14 @@ export default function PhotoTendedero() {
 
   return (
     <div className="relative mt-16 sm:mt-24 pt-8 pb-10 overflow-hidden">
-      {/* Top Header & Navigation Bar */}
-      <div className="mx-auto max-w-[1700px] px-4 sm:px-6 lg:px-10 mb-8 sm:mb-12 flex flex-col sm:flex-row sm:items-end justify-between gap-5 border-b border-[#2C261E] pb-6">
-        <div>
-          <div className="flex items-center gap-2 mb-2">
-            <span className="inline-flex items-center gap-1.5 px-3 py-1 bg-[#202C69] text-[#FAF6EE] text-[11px] sm:text-xs font-black uppercase tracking-wider border border-[#E8D43F]/30 shadow-[2px_2px_0_rgba(0,0,0,0.8)]">
-              <Camera className="w-3.5 h-3.5 text-[#E8D43F]" />
-              <span>Archivo Oficial • Fotos Colgadas</span>
-            </span>
-            <span className="inline-flex items-center gap-1 px-2.5 py-1 bg-[#15130F] text-[#CEC1AD] text-[11px] font-mono border border-[#453B2F]">
-              22 FOTOS EXCLUSIVAS
-            </span>
-          </div>
-
-          <h3 className="letra-bandera text-[clamp(1.8rem,4vw,3.2rem)] text-[#FAF6EE] leading-[0.92]">
-            MOMENTOS, GIRA & AMIGOS
-          </h3>
-          <p className="text-sm sm:text-base text-[#CEC1AD] mt-1 font-medium max-w-xl">
-            De las zapadas con Leo Messi y Di María hasta los estadios de fútbol y festivales más multitudinarios.
-          </p>
-        </div>
-
-        {/* Action Controls & Arrows */}
-        <div className="flex items-center gap-3 select-none self-start sm:self-auto">
-          <span className="hidden md:inline-flex items-center gap-1.5 text-xs text-[#8F8270] font-bold uppercase tracking-wider mr-2">
-            <Sparkles className="w-3.5 h-3.5 text-[#E8D43F]" />
-            Giro continuo automático • Click para ampliar
-          </span>
-
-          <button
-            type="button"
-            onClick={() => handleScroll("left")}
-            aria-label="Ver fotos anteriores"
-            className="w-11 h-11 flex items-center justify-center bg-[#15130F] hover:bg-[#E8D43F] text-[#FAF6EE] hover:text-black border-2 border-[#453B2F] hover:border-[#E8D43F] shadow-[4px_4px_0_rgba(0,0,0,0.9)] hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer"
-          >
-            <ChevronLeft className="w-5 h-5" />
-          </button>
-          <button
-            type="button"
-            onClick={() => handleScroll("right")}
-            aria-label="Ver fotos siguientes"
-            className="w-11 h-11 flex items-center justify-center bg-[#15130F] hover:bg-[#E8D43F] text-[#FAF6EE] hover:text-black border-2 border-[#453B2F] hover:border-[#E8D43F] shadow-[4px_4px_0_rgba(0,0,0,0.9)] hover:-translate-y-0.5 active:translate-y-0 transition-all cursor-pointer"
-          >
-            <ChevronRight className="w-5 h-5" />
-          </button>
-        </div>
+      {/* Top Header */}
+      <div className="mx-auto max-w-[1700px] px-4 sm:px-6 lg:px-10 mb-8 sm:mb-12 border-b border-[#2C261E] pb-6">
+        <h3 className="letra-bandera text-[clamp(1.8rem,4vw,3.2rem)] text-[#FAF6EE] leading-[0.92]">
+          MOMENTOS, GIRA & AMIGOS
+        </h3>
+        <p className="text-sm sm:text-base text-[#CEC1AD] mt-1 font-medium max-w-xl">
+          De las zapadas con Leo Messi y Di María hasta los estadios de fútbol y festivales más multitudinarios.
+        </p>
       </div>
 
       {/* CLOTHESLINE TENDEDERO CONTAINER */}
