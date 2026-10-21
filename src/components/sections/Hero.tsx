@@ -46,12 +46,12 @@ export default function Hero() {
       <div className="absolute inset-0 -z-20 overflow-hidden bg-[#0C0B09]">
         <div className="animate-deriva relative w-full h-full">
           <Image
-            src="/assets/panda-velez-original.jpg"
-            alt="El Panda DJ tocando en vivo en el Estadio Vélez Sarsfield"
+            src="/assets/fondo-hero-nuevo.jpg"
+            alt="El Panda DJ tocando en vivo"
             fill
             priority
-            quality={95}
-            className="object-cover object-[50%_35%] brightness-[0.58] contrast-[1.22] saturate-[0.80]"
+            quality={92}
+            className="object-cover object-[50%_35%] brightness-[0.60] contrast-[1.20] saturate-[0.85]"
           />
         </div>
 
