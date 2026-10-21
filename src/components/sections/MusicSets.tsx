@@ -58,7 +58,7 @@ export default function MusicSets() {
           <div className="revelar" style={{ "--i": 2 } as React.CSSProperties}>
             <div className="iza flex items-center gap-3">
               <a
-                href="https://www.youtube.com/@unpocoderuido"
+                href="https://www.youtube.com/channel/UCg6kTB4vw1XYFBR4TtHaBuQ"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center gap-2 px-5 py-3 rounded-full bg-[#0C0B09] hover:bg-black text-[#FAF6EE] border border-[#2C261E] hover:border-[#E8D43F] text-xs font-black uppercase tracking-wider transition-all hover:scale-105"

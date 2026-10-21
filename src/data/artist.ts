@@ -11,7 +11,7 @@ export const ARTIST_DATA = {
   socials: {
     instagram: "https://www.instagram.com/elpandadj",
     tiktok: "https://www.tiktok.com/@elpandadj",
-    youtube: "https://www.youtube.com/@unpocoderuido",
+    youtube: "https://www.youtube.com/channel/UCg6kTB4vw1XYFBR4TtHaBuQ",
     spotify: "https://open.spotify.com",
   },
   stats: [

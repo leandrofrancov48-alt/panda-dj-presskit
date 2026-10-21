@@ -5,7 +5,7 @@ export default function Footer() {
   const socialLinks = [
     {
       name: "YouTube",
-      url: "https://www.youtube.com/@unpocoderuido",
+      url: "https://www.youtube.com/channel/UCg6kTB4vw1XYFBR4TtHaBuQ",
       handle: "@unpocoderuido",
       icon: <YoutubeIcon className="w-5 h-5 text-red-500" />,
     },
