@@ -96,7 +96,7 @@ export default function SplashIntro() {
         style={{
           backgroundColor: "#0C0B09",
           backgroundImage:
-            "linear-gradient(to bottom, rgba(12,11,9,0.75) 0%, rgba(12,11,9,0.48) 100%), url('/assets/fondo-animacion-nuevo.jpg')",
+            "linear-gradient(to bottom, rgba(12,11,9,0.75) 0%, rgba(12,11,9,0.48) 100%), url('/assets/fondo-hero-nuevo.jpg')",
           backgroundSize: "100vw 100vh",
           backgroundPosition: "top center",
           backgroundRepeat: "no-repeat",
@@ -137,7 +137,7 @@ export default function SplashIntro() {
         style={{
           backgroundColor: "#0C0B09",
           backgroundImage:
-            "linear-gradient(to bottom, rgba(12,11,9,0.48) 0%, rgba(12,11,9,0.75) 100%), url('/assets/fondo-animacion-nuevo.jpg')",
+            "linear-gradient(to bottom, rgba(12,11,9,0.48) 0%, rgba(12,11,9,0.75) 100%), url('/assets/fondo-hero-nuevo.jpg')",
           backgroundSize: "100vw 100vh",
           backgroundPosition: "bottom center",
           backgroundRepeat: "no-repeat",

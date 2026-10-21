@@ -46,7 +46,7 @@ export default function Hero() {
       <div className="absolute inset-0 -z-20 overflow-hidden bg-[#0C0B09]">
         <div className="animate-deriva relative w-full h-full">
           <Image
-            src="/assets/fondo-hero-nuevo.jpg"
+            src="/assets/fondo-animacion-nuevo.jpg"
             alt="El Panda DJ tocando en vivo"
             fill
             priority
