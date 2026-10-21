@@ -61,7 +61,7 @@ export default function Hero() {
           className="absolute inset-0 -z-10 bg-[#0C0B09]/45 mix-blend-multiply"
         />
 
-        {/* 2. Analog 35mm Film Grain (Disguises AI smoothing and plastic artifacts) */}
+        {/* 2. Analog 35mm Film Grain */}
         <div
           aria-hidden="true"
           className="absolute inset-0 -z-10 pointer-events-none opacity-[0.09] mix-blend-overlay"
@@ -100,10 +100,10 @@ export default function Hero() {
       {/* Main Content Area */}
       <div className="relative mx-auto w-full max-w-[1900px] px-4 sm:px-6 lg:px-10 my-auto">
         <div className="relative">
-          {/* Big Panda Logo floating on the right side - Centered to the headline */}
+          {/* Desktop Big Panda Logo floating on the right side - only on md: screens and up */}
           <div
             aria-hidden="true"
-            className={`pointer-events-none absolute top-1/2 -translate-y-1/2 right-2 sm:right-6 lg:right-12 w-[clamp(8.5rem,20vw,24rem)] aspect-square z-20 transition-all duration-700 ${
+            className={`hidden md:block pointer-events-none absolute top-1/2 -translate-y-1/2 right-6 lg:right-12 w-[clamp(12rem,21vw,24rem)] aspect-square z-20 transition-all duration-700 ${
               revealed ? "opacity-100 scale-100" : "opacity-0 scale-90"
             }`}
           >
@@ -121,29 +121,50 @@ export default function Hero() {
           {/* Giant Headline (Fer Palacio Style) */}
           <h1 className="flex flex-col">
             <span className="sr-only">El Panda DJ</span>
+            {/* Line 1: EL PANDA (Full unobstructed width) */}
             <div
               className={`revelar ${revealed ? "abierta" : ""}`}
               style={{ "--i": 0 } as React.CSSProperties}
             >
               <span
-                className="pincelada letra-bandera text-[clamp(4rem,15vw,14rem)]"
+                className="pincelada letra-bandera text-[clamp(2.75rem,13vw,14rem)]"
                 data-registro="EL PANDA"
                 style={{ "--registro": "#E8D43F" } as React.CSSProperties}
               >
                 EL PANDA
               </span>
             </div>
+
+            {/* Line 2: DJ + Mobile Panda Logo Sticker side-by-side */}
             <div
-              className={`revelar ${revealed ? "abierta" : ""}`}
+              className={`revelar flex items-center gap-3.5 sm:gap-6 ${revealed ? "abierta" : ""}`}
               style={{ "--i": 1 } as React.CSSProperties}
             >
               <span
-                className="pincelada letra-bandera text-[clamp(4rem,15vw,14rem)] -mt-[0.06em]"
+                className="pincelada letra-bandera text-[clamp(2.75rem,13vw,14rem)] -mt-[0.06em]"
                 data-registro="DJ"
                 style={{ "--registro": "#E8D43F" } as React.CSSProperties}
               >
                 DJ
               </span>
+
+              {/* Mobile-only Panda Logo sticker inline with DJ - NEVER overlaps EL PANDA */}
+              <div
+                aria-hidden="true"
+                className={`md:hidden pointer-events-none relative w-[clamp(4.25rem,18vw,6.5rem)] aspect-square shrink-0 -mt-1 sm:-mt-2 transition-all duration-700 ${
+                  revealed ? "opacity-100 scale-100" : "opacity-0 scale-90"
+                }`}
+              >
+                <div className="animate-float-subtle relative w-full h-full drop-shadow-[0_12px_24px_rgba(0,0,0,0.95)]">
+                  <Image
+                    src="/panda-logo.png"
+                    alt="El Panda DJ Sticker"
+                    fill
+                    priority
+                    className="object-contain"
+                  />
+                </div>
+              </div>
             </div>
           </h1>
         </div>

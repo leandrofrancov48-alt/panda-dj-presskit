@@ -34,7 +34,7 @@ export default function SplashIntro() {
         setLineActive(false);
       }, 160);
 
-      // Complete unmount after curtains fully exit the viewport (150ms delay + 680ms duration + 70ms buffer)
+      // Complete unmount after curtains fully exit the viewport
       setTimeout(() => {
         setStage("complete");
       }, 900);
@@ -45,7 +45,7 @@ export default function SplashIntro() {
       triggerSplit();
     }, 2300);
 
-    // Allow user to skip after 600ms grace period (prevents accidental clicks on refresh)
+    // Allow user to skip after 600ms grace period
     let pointerListener: (() => void) | null = null;
     let keyListener: ((e: KeyboardEvent) => void) | null = null;
 
@@ -96,7 +96,7 @@ export default function SplashIntro() {
         style={{
           backgroundColor: "#0C0B09",
           backgroundImage:
-            "linear-gradient(to bottom, rgba(12,11,9,0.85) 0%, rgba(12,11,9,0.5) 45%, rgba(12,11,9,0.98) 100%), url('/assets/panda-velez-original.jpg')",
+            "linear-gradient(to bottom, rgba(12,11,9,0.75) 0%, rgba(12,11,9,0.48) 100%), url('/assets/panda-velez-original.jpg')",
           backgroundSize: "100vw 100vh",
           backgroundPosition: "top center",
           backgroundRepeat: "no-repeat",
@@ -112,7 +112,7 @@ export default function SplashIntro() {
           }}
         />
 
-        {/* TOP 4 COLOR STRIPES RIBBON (Inside top half so it rides up with the curtain) */}
+        {/* TOP 4 COLOR STRIPES RIBBON */}
         <div className="absolute inset-x-0 top-0 z-30 flex pointer-events-none">
           {["#202C69", "#E8D43F", "#F46753", "#202C69"].map((color, idx) => (
             <span
@@ -137,7 +137,7 @@ export default function SplashIntro() {
         style={{
           backgroundColor: "#0C0B09",
           backgroundImage:
-            "linear-gradient(to top, rgba(12,11,9,0.98) 0%, rgba(12,11,9,0.5) 55%, rgba(12,11,9,0.85) 100%), url('/assets/panda-velez-original.jpg')",
+            "linear-gradient(to bottom, rgba(12,11,9,0.48) 0%, rgba(12,11,9,0.75) 100%), url('/assets/panda-velez-original.jpg')",
           backgroundSize: "100vw 100vh",
           backgroundPosition: "bottom center",
           backgroundRepeat: "no-repeat",
@@ -154,7 +154,7 @@ export default function SplashIntro() {
         />
       </div>
 
-      {/* 3. CENTER RAZOR LINE (Flashes across the horizon for only 160ms on closed curtain, then fully unmounts) */}
+      {/* 3. CENTER RAZOR LINE */}
       {lineActive && (
         <div
           className="splash-raja absolute inset-x-0 top-1/2 z-30 h-[2.5px] bg-[#FAF6EE] origin-center -translate-y-1/2 pointer-events-none"
@@ -165,19 +165,22 @@ export default function SplashIntro() {
         />
       )}
 
-      {/* 4. GIANT CENTER TEXT ("SIN EL PANDA NO HAY CUMBIA" - Fer Palacio Style) */}
+      {/* 4. GIANT CENTER TEXT ("SIN EL PANDA NO HAY CUMBIA") */}
       <div
-        className={`absolute inset-0 z-20 flex items-center justify-center px-[6vw] pointer-events-none transition-all duration-200 ${
+        className={`absolute inset-0 z-20 flex items-center justify-center px-[5vw] pointer-events-none transition-all duration-200 ${
           isSplitting ? "opacity-0 scale-95" : "opacity-100 scale-100"
         }`}
       >
         <p className="w-full text-center">
           {/* Line 1: SIN EL PANDA */}
           <span
-            className={`splash-pincelada block text-[min(11.5vw,17vh)] leading-[0.85] font-black tracking-tighter whitespace-nowrap drop-shadow-[0_10px_30px_rgba(0,0,0,0.9)] ${
+            className={`splash-pincelada letra-bandera block text-[clamp(2.6rem,11.5vw,10.5rem)] leading-[0.88] tracking-tight whitespace-nowrap ${
               textVisible ? "visible" : ""
             }`}
-            style={{ transitionDelay: "120ms" }}
+            style={{
+              transitionDelay: "120ms",
+              textShadow: "0 4px 14px rgba(0,0,0,0.85)",
+            }}
           >
             <span style={{ color: "#F46753" }}>SIN </span>
             <span style={{ color: "#FAF6EE" }}>EL PANDA</span>
@@ -185,12 +188,15 @@ export default function SplashIntro() {
 
           {/* Line 2: NO HAY CUMBIA */}
           <span
-            className={`splash-pincelada block text-[min(11.5vw,17vh)] leading-[0.85] font-black tracking-tighter whitespace-nowrap drop-shadow-[0_10px_30px_rgba(0,0,0,0.9)] mt-1 sm:mt-2 ${
+            className={`splash-pincelada letra-bandera block text-[clamp(2.6rem,11.5vw,10.5rem)] leading-[0.88] tracking-tight whitespace-nowrap mt-1.5 sm:mt-2.5 ${
               textVisible ? "visible" : ""
             }`}
-            style={{ transitionDelay: "280ms" }}
+            style={{
+              transitionDelay: "280ms",
+              textShadow: "0 4px 14px rgba(0,0,0,0.85)",
+            }}
           >
-            <span style={{ color: "#202C69" }}>NO HAY </span>
+            <span style={{ color: "#3B82F6" }}>NO HAY </span>
             <span style={{ color: "#E8D43F" }}>CUMBIA</span>
           </span>
         </p>
