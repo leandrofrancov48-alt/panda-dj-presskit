@@ -75,14 +75,14 @@ export default function Bio() {
                   className="resaltador resaltador-naranja text-[0.92em]"
                   style={{ "--delay": "3000ms" } as React.CSSProperties}
                 >
-                  Feriado de Maldini
+                  Movistar Arena
                 </span>{" "}
                 y{" "}
                 <span
                   className="resaltador resaltador-amarillo text-[0.92em]"
                   style={{ "--delay": "3300ms" } as React.CSSProperties}
                 >
-                  Buenos Aires Cumbia
+                  Antel Arena
                 </span>
                 , es el referente indiscutido de la pista de baile.
               </p>

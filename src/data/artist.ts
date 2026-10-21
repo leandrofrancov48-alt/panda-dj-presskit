@@ -43,7 +43,7 @@ export const ARTIST_DATA = {
     {
       number: "III",
       title: "El Recorrido por las Pistas: Boliches, Bares y Grandes Eventos",
-      text: "Su salto del estudio a los escenarios masivos fue demoledor. Recorrió incansablemente los boliches más emblemáticos del circuito nocturno y fiestas de culto masivas como Feriado de Maldini y Buenos Aires Cumbia, compartiendo escenario con las bandas históricas más grandes del país y demostrando su condición de maestro de ceremonias para hacer bailar a multitudes durante horas.",
+      text: "Su salto del estudio a los escenarios masivos fue demoledor. Recorrió incansablemente los estadios y arenas más emblemáticos como Movistar Arena y Antel Arena, compartiendo escenario con las bandas históricas más grandes del país y demostrando su condición de maestro de ceremonias para hacer bailar a multitudes durante horas.",
     },
     {
       number: "IV",

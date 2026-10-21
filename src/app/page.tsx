@@ -37,7 +37,7 @@ export default function Home() {
 
       {/* 5. Secondary Marquee Ticker */}
       <MarqueeTicker
-        text="GIRA NACIONAL 2026 ★ APERTURA HISTÓRICA EN VÉLEZ ★ FERIADO DE MALDINI ★ BUENOS AIRES CUMBIA ★ BOOKING OFICIAL ★"
+        text="GIRA NACIONAL 2026 ★ APERTURA HISTÓRICA EN VÉLEZ ★ MOVISTAR ARENA ★ ANTEL ARENA ★ BOOKING OFICIAL ★"
         reverse={true}
         bgColor="bg-[#15130F]"
         textColor="text-[#E8D43F]"
