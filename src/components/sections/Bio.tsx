@@ -36,12 +36,12 @@ export default function Bio() {
                 >
                   Un Poco de Ruido
                 </span>
-                , el fenómeno musical y audiovisual que revolucionó el{" "}
+                , el fenómeno musical y audiovisual que revolucionó{" "}
                 <span
                   className="resaltador resaltador-azul text-[0.92em]"
                   style={{ "--delay": "1800ms" } as React.CSSProperties}
                 >
-                  género tropical
+                  la comunidad cumbiera
                 </span>{" "}
                 a nivel global.
               </p>
@@ -49,12 +49,12 @@ export default function Bio() {
 
             <div className="revelar" style={{ "--i": 3 } as React.CSSProperties}>
               <p className="iza text-base sm:text-xl font-normal leading-relaxed text-[#CEC1AD]">
-                Llevó la{" "}
+                Llevó{" "}
                 <span
                   className="resaltador resaltador-naranja text-[0.92em]"
                   style={{ "--delay": "2100ms" } as React.CSSProperties}
                 >
-                  cumbia y el cachengue
+                  la cumbia, el cuarte y la guaracha
                 </span>{" "}
                 desde las zapadas barriales a los escenarios más convocantes de Argentina, consagrándose con la apertura histórica del show en el{" "}
                 <span
