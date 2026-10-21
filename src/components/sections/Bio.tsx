@@ -1,5 +1,4 @@
 import Image from "next/image";
-import { Download, Sliders } from "lucide-react";
 import PhotoTendedero from "@/components/ui/PhotoTendedero";
 
 export default function Bio() {
@@ -89,7 +88,7 @@ export default function Bio() {
               </p>
             </div>
 
-            {/* Clean Highlight Badges (No ugly empty boxes!) */}
+            {/* Clean Highlight Badges */}
             <div className="revelar" style={{ "--i": 4 } as React.CSSProperties}>
               <div className="iza flex flex-wrap items-center gap-3 pt-2">
                 <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#15130F] border border-[#453B2F] text-[#FAF6EE] text-sm sm:text-base font-black uppercase tracking-wider">
@@ -101,28 +100,6 @@ export default function Bio() {
                 <span className="inline-flex items-center gap-2 px-4 py-2 bg-[#15130F] border border-[#453B2F] text-[#FAF6EE] text-sm sm:text-base font-black uppercase tracking-wider">
                   <span className="text-[#E8D43F] font-mono text-lg">#1</span> Fenómeno Streaming
                 </span>
-              </div>
-            </div>
-
-            {/* Rider & Press Kit Download Buttons */}
-            <div className="revelar" style={{ "--i": 5 } as React.CSSProperties}>
-              <div className="iza pt-4 flex flex-wrap items-center gap-4">
-                <a
-                  href="/assets/logos/panda-logo-hq.png"
-                  download="el-panda-dj-logos.png"
-                  className="inline-flex items-center gap-2.5 px-6 py-3.5 bg-[#E8D43F] hover:bg-[#F2E263] text-black text-xs sm:text-sm font-black uppercase tracking-wider transition-all shadow-[4px_4px_0_rgba(0,0,0,0.9)] hover:-translate-y-0.5 active:translate-y-0"
-                >
-                  <Download className="w-4 h-4" />
-                  <span>Descargar Press Kit (Logos & Fotos HD)</span>
-                </a>
-
-                <a
-                  href="#contacto"
-                  className="inline-flex items-center gap-2 px-6 py-3.5 bg-[#15130F] hover:bg-[#201C16] text-[#FAF6EE] border-2 border-[#453B2F] hover:border-[#E8D43F] text-xs sm:text-sm font-black uppercase tracking-wider transition-all shadow-[4px_4px_0_rgba(0,0,0,0.9)] hover:-translate-y-0.5 active:translate-y-0"
-                >
-                  <Sliders className="w-4 h-4 text-[#E8D43F]" />
-                  <span>Consultar Rider Técnico</span>
-                </a>
               </div>
             </div>
           </div>
@@ -156,4 +133,3 @@ export default function Bio() {
     </section>
   );
 }
-
