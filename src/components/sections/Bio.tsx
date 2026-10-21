@@ -54,7 +54,7 @@ export default function Bio() {
                   className="resaltador resaltador-naranja text-[0.92em]"
                   style={{ "--delay": "2100ms" } as React.CSSProperties}
                 >
-                  la cumbia, el cuarte y la guaracha
+                  la cumbia, el cuarteto y la guaracha
                 </span>{" "}
                 desde las zapadas barriales a los escenarios más convocantes de Argentina, consagrándose con la apertura histórica del show en el{" "}
                 <span
