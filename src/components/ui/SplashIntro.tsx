@@ -91,7 +91,7 @@ export default function SplashIntro() {
     <div
       data-recibimiento="true"
       aria-hidden="true"
-      className={`fixed inset-0 z-[100] overflow-hidden select-none bg-[#0C0B09] ${
+      className={`fixed inset-0 z-[100] overflow-hidden select-none bg-transparent ${
         isSplitting ? "pointer-events-none" : "pointer-events-auto"
       }`}
     >
