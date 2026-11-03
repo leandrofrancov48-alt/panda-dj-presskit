@@ -93,15 +93,19 @@ export default function SplashIntro() {
         className={`telon-mitad absolute inset-x-0 h-[50.5%] top-0 z-10 overflow-hidden ${
           isSplitting ? "telon-abrir-arriba" : ""
         }`}
-        style={{
-          backgroundColor: "#0C0B09",
-          backgroundImage:
-            "linear-gradient(to bottom, rgba(12,11,9,0.75) 0%, rgba(12,11,9,0.48) 100%), url('/assets/fondo-hero-nuevo.jpg')",
-          backgroundSize: "100vw 100vh",
-          backgroundPosition: "top center",
-          backgroundRepeat: "no-repeat",
-        }}
+        style={{ backgroundColor: "#0C0B09" }}
       >
+        <div
+          className="absolute inset-x-0 top-0 pointer-events-none"
+          style={{
+            height: "calc(100% / 0.505)",
+            backgroundImage:
+              "linear-gradient(to bottom, rgba(12,11,9,0.75) 0%, rgba(12,11,9,0.6) 50%, rgba(12,11,9,0.75) 100%), url('/assets/fondo-hero-nuevo.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
         {/* Analog Film Grain */}
         <div
           className="absolute inset-0 opacity-[0.08] mix-blend-overlay pointer-events-none"
@@ -134,15 +138,19 @@ export default function SplashIntro() {
         className={`telon-mitad absolute inset-x-0 h-[50.5%] bottom-0 z-10 overflow-hidden ${
           isSplitting ? "telon-abrir-abajo" : ""
         }`}
-        style={{
-          backgroundColor: "#0C0B09",
-          backgroundImage:
-            "linear-gradient(to bottom, rgba(12,11,9,0.48) 0%, rgba(12,11,9,0.75) 100%), url('/assets/fondo-hero-nuevo.jpg')",
-          backgroundSize: "100vw 100vh",
-          backgroundPosition: "bottom center",
-          backgroundRepeat: "no-repeat",
-        }}
+        style={{ backgroundColor: "#0C0B09" }}
       >
+        <div
+          className="absolute inset-x-0 bottom-0 pointer-events-none"
+          style={{
+            height: "calc(100% / 0.505)",
+            backgroundImage:
+              "linear-gradient(to bottom, rgba(12,11,9,0.75) 0%, rgba(12,11,9,0.6) 50%, rgba(12,11,9,0.75) 100%), url('/assets/fondo-hero-nuevo.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        />
         {/* Analog Film Grain */}
         <div
           className="absolute inset-0 opacity-[0.08] mix-blend-overlay pointer-events-none"
