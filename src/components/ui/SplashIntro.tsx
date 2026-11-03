@@ -1,17 +1,18 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 export default function SplashIntro() {
-  const [mounted, setMounted] = useState(false);
   const [stage, setStage] = useState<"enter" | "splitting" | "complete">("enter");
   const [textVisible, setTextVisible] = useState(false);
   const [ribbonVisible, setRibbonVisible] = useState(false);
   const [lineActive, setLineActive] = useState(false);
 
   useEffect(() => {
-    setMounted(true);
     window.scrollTo(0, 0);
+
+    const isFrozen = window.location.search.includes("freeze");
 
     // Step 1: Ribbon entry
     const ribbonTimer = setTimeout(() => {
@@ -22,6 +23,12 @@ export default function SplashIntro() {
     const textTimer = setTimeout(() => {
       setTextVisible(true);
     }, 280);
+
+    if (isFrozen) {
+      setRibbonVisible(true);
+      setTextVisible(true);
+      return;
+    }
 
     // Function to trigger curtain split
     const triggerSplit = () => {
@@ -69,14 +76,14 @@ export default function SplashIntro() {
     return () => {
       clearTimeout(ribbonTimer);
       clearTimeout(textTimer);
-      clearTimeout(splitTimer);
+      if (splitTimer) clearTimeout(splitTimer);
       clearTimeout(skipTimer);
       if (pointerListener) window.removeEventListener("pointerdown", pointerListener);
       if (keyListener) window.removeEventListener("keydown", keyListener);
     };
   }, []);
 
-  if (!mounted || stage === "complete") return null;
+  if (stage === "complete") return null;
 
   const isSplitting = stage === "splitting";
 
@@ -84,37 +91,42 @@ export default function SplashIntro() {
     <div
       data-recibimiento="true"
       aria-hidden="true"
-      className={`fixed inset-0 z-[100] overflow-hidden select-none bg-transparent ${
+      className={`fixed inset-0 z-[100] overflow-hidden select-none bg-[#0C0B09] ${
         isSplitting ? "pointer-events-none" : "pointer-events-auto"
       }`}
     >
       {/* 1. TOP HALF CURTAIN (Slides UP on split) */}
       <div
-        className={`telon-mitad absolute inset-x-0 h-[50.5%] top-0 z-10 overflow-hidden ${
+        className={`telon-mitad absolute inset-x-0 h-[calc(50%+1px)] top-0 z-10 overflow-hidden bg-[#0C0B09] ${
           isSplitting ? "telon-abrir-arriba" : ""
         }`}
-        style={{ backgroundColor: "#0C0B09" }}
       >
-        <div
-          className="absolute inset-x-0 top-0 pointer-events-none"
-          style={{
-            height: "calc(100% / 0.505)",
-            backgroundImage:
-              "linear-gradient(to bottom, rgba(12,11,9,0.75) 0%, rgba(12,11,9,0.6) 50%, rgba(12,11,9,0.75) 100%), url('/assets/fondo-hero-nuevo.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        />
-        {/* Analog Film Grain */}
-        <div
-          className="absolute inset-0 opacity-[0.08] mix-blend-overlay pointer-events-none"
-          style={{
-            backgroundImage: "url('/assets/noise.png')",
-            backgroundRepeat: "repeat",
-            backgroundSize: "200px 200px",
-          }}
-        />
+        {/* Full-viewport inner container: exactly matches screen dimensions and position */}
+        <div className="absolute top-0 left-0 w-full h-[200%] pointer-events-none">
+          <Image
+            src="/assets/fondo-hero-nuevo.jpg"
+            alt="El Panda DJ apertura"
+            fill
+            priority
+            quality={90}
+            className="object-cover object-center brightness-[0.72] contrast-[1.15]"
+          />
+          {/* Continuous dark gradient overlay */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-b from-[#0C0B09]/80 via-[#0C0B09]/45 to-[#0C0B09]/85"
+          />
+          {/* Analog Film Grain */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-[0.08] mix-blend-overlay"
+            style={{
+              backgroundImage: "url('/assets/noise.png')",
+              backgroundRepeat: "repeat",
+              backgroundSize: "200px 200px",
+            }}
+          />
+        </div>
 
         {/* TOP 4 COLOR STRIPES RIBBON */}
         <div className="absolute inset-x-0 top-0 z-30 flex pointer-events-none">
@@ -135,31 +147,36 @@ export default function SplashIntro() {
 
       {/* 2. BOTTOM HALF CURTAIN (Slides DOWN on split) */}
       <div
-        className={`telon-mitad absolute inset-x-0 h-[50.5%] bottom-0 z-10 overflow-hidden ${
+        className={`telon-mitad absolute inset-x-0 h-1/2 bottom-0 z-10 overflow-hidden bg-[#0C0B09] ${
           isSplitting ? "telon-abrir-abajo" : ""
         }`}
-        style={{ backgroundColor: "#0C0B09" }}
       >
-        <div
-          className="absolute inset-x-0 bottom-0 pointer-events-none"
-          style={{
-            height: "calc(100% / 0.505)",
-            backgroundImage:
-              "linear-gradient(to bottom, rgba(12,11,9,0.75) 0%, rgba(12,11,9,0.6) 50%, rgba(12,11,9,0.75) 100%), url('/assets/fondo-hero-nuevo.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-          }}
-        />
-        {/* Analog Film Grain */}
-        <div
-          className="absolute inset-0 opacity-[0.08] mix-blend-overlay pointer-events-none"
-          style={{
-            backgroundImage: "url('/assets/noise.png')",
-            backgroundRepeat: "repeat",
-            backgroundSize: "200px 200px",
-          }}
-        />
+        {/* Full-viewport inner container anchored to bottom: exactly aligns with top half */}
+        <div className="absolute bottom-0 left-0 w-full h-[200%] pointer-events-none">
+          <Image
+            src="/assets/fondo-hero-nuevo.jpg"
+            alt="El Panda DJ apertura"
+            fill
+            priority
+            quality={90}
+            className="object-cover object-center brightness-[0.72] contrast-[1.15]"
+          />
+          {/* Continuous dark gradient overlay */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 bg-gradient-to-b from-[#0C0B09]/80 via-[#0C0B09]/45 to-[#0C0B09]/85"
+          />
+          {/* Analog Film Grain */}
+          <div
+            aria-hidden="true"
+            className="absolute inset-0 opacity-[0.08] mix-blend-overlay"
+            style={{
+              backgroundImage: "url('/assets/noise.png')",
+              backgroundRepeat: "repeat",
+              backgroundSize: "200px 200px",
+            }}
+          />
+        </div>
       </div>
 
       {/* 3. CENTER RAZOR LINE */}
@@ -175,14 +192,14 @@ export default function SplashIntro() {
 
       {/* 4. GIANT CENTER TEXT ("SIN EL PANDA NO HAY CUMBIA") */}
       <div
-        className={`absolute inset-0 z-20 flex items-center justify-center px-[5vw] pointer-events-none transition-all duration-200 ${
+        className={`absolute inset-0 z-20 flex items-center justify-center px-4 sm:px-6 pointer-events-none transition-all duration-200 ${
           isSplitting ? "opacity-0 scale-95" : "opacity-100 scale-100"
         }`}
       >
         <p className="w-full text-center">
           {/* Line 1: SIN EL PANDA */}
           <span
-            className={`splash-pincelada letra-bandera block text-[clamp(2.6rem,11.5vw,10.5rem)] leading-[0.88] tracking-tight whitespace-nowrap ${
+            className={`splash-pincelada letra-bandera block text-[clamp(2rem,9.5vw,9.5rem)] leading-[0.88] tracking-tight whitespace-nowrap ${
               textVisible ? "visible" : ""
             }`}
             style={{
@@ -196,7 +213,7 @@ export default function SplashIntro() {
 
           {/* Line 2: NO HAY CUMBIA */}
           <span
-            className={`splash-pincelada letra-bandera block text-[clamp(2.6rem,11.5vw,10.5rem)] leading-[0.88] tracking-tight whitespace-nowrap mt-1.5 sm:mt-2.5 ${
+            className={`splash-pincelada letra-bandera block text-[clamp(2rem,9.5vw,9.5rem)] leading-[0.88] tracking-tight whitespace-nowrap mt-1.5 sm:mt-2.5 ${
               textVisible ? "visible" : ""
             }`}
             style={{
